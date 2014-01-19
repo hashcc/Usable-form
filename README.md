@@ -2,6 +2,8 @@
 
 そこそこユーザビリティの高い、ECサイトのフォームです。詳しくは[詳細記事ページ](http://note.openvista.jp/2014/usable-form)よりご確認ください。
 
+[デモはこちらです](http://lab.openvista.jp/_misc/form/)
+
 # 利用しているライブラリ
 
 - [AjaxZip 2.0](http://www.kawa.net/works/ajax/ajaxzip2/ajaxzip2.html)
