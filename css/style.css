@@ -1,0 +1,80 @@
+div.container, section{
+  margin-bottom: 20px;
+}
+
+/* 入力ステータス */
+
+*[required],
+.required{
+  background-color: rgba(255, 221, 221, 0.7);
+}
+
+*[required].dealed,
+.required.dealed{
+  background-color: rgba(223, 240, 216, 1);
+}
+
+.caution{
+  background-color: rgba(252, 248, 227, 1);
+}
+
+.alert{
+  background-color: rgba(255, 221, 221, 0.7);
+}
+
+.required{
+  padding: 0px 15px 5px 15px;
+  margin-left: 15px;
+}
+
+.alphabet{
+  ime-mode: disabled;
+}
+
+h2{
+  padding-bottom: 7px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+#email_confirm{
+  font-size: 230%;
+  font-family: monospace;
+}
+
+#cc_number{
+  background-image: none;
+  background-position: 97% 50%;
+  background-repeat: no-repeat;
+}
+
+span.label{
+  margin-right: 1em;
+}
+
+div.form-group div.continue{
+  float: left;
+}
+
+div.input-group{
+  padding: 0px 15px !important;
+}
+
+input.holder{
+  text-transform: uppercase;
+}
+
+.ui-widget-content{
+  border-color: #ccc;
+}
+
+.ui-widget-content td.ui-datepicker-today span{
+  background: rgba(255, 165, 0, 0.4) none;
+}
+
+@media (max-width: 768px){
+  .continue,
+  .datepicker{
+    margin-bottom: 4px;
+  }
+}
