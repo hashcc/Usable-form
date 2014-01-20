@@ -232,7 +232,7 @@ formAction.kanjiConverter = function(){
     function substituteYomi(yomis){
 
       for (var i=0; i<yomis.length; i++){
-        if (/^[ァ-ン]*$/.test(yomis[i]) == true){
+        if (/^[ぁ-ん]*$/.test(yomis[i]) == true){
           return yomis[i];
         }
       }
