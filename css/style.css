@@ -22,7 +22,7 @@ div.container, section{
   background-color: rgba(255, 221, 221, 0.7);
 }
 
-.required{
+div.required{
   padding: 0px 15px 5px 15px;
   margin-left: 15px;
 }
