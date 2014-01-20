@@ -1,7 +1,6 @@
 $(function(){
 
   formAction.checkPattern();
-  formAction.checkAllFieldFilled();
   formAction.emailImitater();
   formAction.creditcardField();
   formAction.kanjiConverter();
@@ -224,17 +223,66 @@ formAction.kanjiConverter = function(){
 
 // カレンダー呼び出し
 formAction.datePicker = function(){
+  
+  var min = 2;  // 最短配達可能日（今日 + min）
+  var max = 30; // 最長配達可能日（今日 + max）
 
-  $.datepicker.setDefaults($.datepicker.regional["ja"]);
-  $("#datepicker").datepicker({
-    "dateFormat": "yy/mm/dd",
-    "defaultDate": 2,
-    "firstDay": 1,
-    "minDate": 1, 
-    "maxDate": 30
-  });
+  // <input type="date">をサポートしていれば、ネイティブ機能を利用
+  // 未サポートであればフォールバックとしてjQuery UI DatePickerを利用 
+
+  if (Modernizr.inputtypes.date) {
+    
+    $("#datepicker")
+      .attr("value", moveDate(min))
+      .attr("min",   moveDate(min))
+      .attr("max",   moveDate(max));
+
+  } else{
+
+    var prefix  = "//ajax.googleapis.com/ajax/libs/jqueryui/1";
+    
+    // 動的にjQuery UIライブラリを読み込み
+    $.when(
+      
+      $.getScript(prefix+"/jquery-ui.min.js"),
+      $.getScript(prefix+"/i18n/jquery.ui.datepicker-ja.min.js"),
+      $.Deferred(function(deferred){
+        $(deferred.resolve);
+      })
+
+    ).done(function(){
+
+      // 読み込み完了したらdatepickerを起動
+      $.datepicker.setDefaults($.datepicker.regional["ja"]);
+      $("#datepicker").datepicker({
+        "dateFormat": "yyyy-mm-dd",
+        "defaultDate": min,
+        "minDate": min, 
+        "maxDate": max,
+        "firstDay": 1 // 月曜始まり
+      });
+
+    });
+
+  }
 
 };
+
+// 内部関数：指定した日数分、今日から移動した日付を返す
+function moveDate(move) {
+  
+  var d = new Date();
+  d.setDate(d.getDate() + move);
+
+  var f = {
+    year : d.getFullYear(),
+    mon  : ((d.getMonth() < 9) ? "0" : "") + (d.getMonth()+1),
+    day  : ((d.getDate() < 10) ? "0" : "") + (d.getDate())
+  };
+
+  return f.year + "-" + f.mon + "-" + f.day;
+  
+}
 
 // 内部関数：要素にステータスクラスを設定
 function setStatus(elm, status){
@@ -243,7 +291,7 @@ function setStatus(elm, status){
   elm.addClass(status);
   return;
 
-};
+}
 
 // 内部関数：属性存在確認
 function checkAttr(elm, attr){

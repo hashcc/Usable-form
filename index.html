@@ -5,8 +5,7 @@
 <title>ECサイト 入力フォームデモ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="js/jquery.xdomainajax.js"></script>
 <script src="js/ajaxzip2.js"></script>
@@ -32,7 +31,7 @@
   <div class="form-group">
     <label for="zip" class="col-sm-2 control-label">郵便番号</label>
     <div class="col-sm-4">
-      <input type="number" class="form-control alphabet" name="zip" id="zip" pattern="\d{3}[\-\s]?\d{4}" required>
+      <input type="text" class="form-control alphabet" name="zip" id="zip" pattern="\d{3}[\-\s]?\d{4}" required>
       <span class="help-block"><span class="label label-default">例</span>123 4567</span>
       <span class="help-block">入力後に住所が自動入力されます</span>
     </div>
@@ -159,7 +158,7 @@
   <div class="form-group">
     <label for="tel" class="col-sm-2 control-label">電話番号</label>
     <div class="col-sm-6">
-      <input type="number" class="form-control alphabet" name="tel" id="tel" pattern="0\d{1,4}[\-\s]?\d{1,4}[\-\s]\d{4}" required>
+      <input type="tel" class="form-control alphabet" name="tel" id="tel" pattern="0\d{1,4}[\-\s]?\d{1,4}[\-\s]\d{4}" required>
       <span class="help-block"><span class="label label-default">例</span>080 1234 5678</span>
       <span class="help-block">固定電話、携帯電話、いずれもOKです（ただし日本国内の回線に限ります）</span>
     </div>
@@ -209,7 +208,7 @@
     <div class="form-group">
       <label for="cc_number" class="col-sm-2 control-label">カード番号</label>
       <div class="col-sm-6">
-        <input type="number" class="form-control cc-number alphabet" name="cc_number" id="cc_number" pattern="[\d\s]{13,19}" x-autocompletetype="cc-number" data-numeric required>
+        <input type="text" class="form-control cc-number alphabet" name="cc_number" id="cc_number" pattern="[\d\s]{13,19}" x-autocompletetype="cc-number" data-numeric required>
         <span class="help-block"><span class="label label-default">例</span>0123 4567 8901 2345</span>
       </div>
     </div>
@@ -226,7 +225,7 @@
     <div class="form-group">
       <label for="cc-exp" class="col-sm-2 control-label">有効期限</label>
       <div class="col-sm-3">
-        <input type="number" class="form-control cc-exp alphabet" name="cc-exp" id="cc-exp" pattern="[0-1][0-9][\s\/]*[0-9][0-9]" data-numeric x-autocompletetype="cc-exp" placeholder="MM/YY" required maxlength="7">
+        <input type="text" class="form-control cc-exp alphabet" name="cc-exp" id="cc-exp" pattern="[0-1][0-9][\s\/]*[0-9][0-9]" data-numeric x-autocompletetype="cc-exp" placeholder="MM/YY" required maxlength="7">
         <span class="help-block"><span class="label label-default">例</span>12 / 05（月 / 年）</span>
       </div>
     </div>
@@ -234,7 +233,7 @@
     <div class="form-group">
       <label for="cc-sec" class="col-sm-2 control-label">セキュリティコード</label>
       <div class="col-sm-3">
-        <input type="number" class="form-control cc-sec alphabet" name="cc-sec" id="cc-sec" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="3">
+        <input type="text" class="form-control cc-sec alphabet" name="cc-sec" id="cc-sec" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="3">
         <span class="help-block">カードの裏面にある数桁の数字のことです</span>
       </div>
     </div>
