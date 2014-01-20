@@ -31,7 +31,7 @@
   <div class="form-group">
     <label for="zip" class="col-sm-2 control-label">郵便番号</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control alphabet" name="zip" id="zip" pattern="\d{3}[\-\s]?\d{4}" required>
+      <input type="text" class="form-control alphabet" name="zip" id="zip" pattern="\d{3}[\-\s]?\d{4}" x-autocompletetype="postal-code" required>
       <span class="help-block"><span class="label label-default">例</span>123 4567</span>
       <span class="help-block">入力後に住所が自動入力されます</span>
     </div>
@@ -40,7 +40,7 @@
   <div class="form-group">
     <label for="pref" class="col-sm-2 control-label">都道府県</label>
     <div class="col-sm-3">
-      <select name="pref" id="pref" class="form-control" required>
+      <select name="pref" id="pref" class="form-control" x-autocompletetype="region" required>
       <option value="" selected="selected">-- 都道府県 --</option>
       <optgroup label="北海道">
         <option value="1">北海道</option>
@@ -114,7 +114,7 @@
   <div class="form-group">
     <label for="town" class="col-sm-2 control-label">市区町村/番地</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" name="town" id="town" required>
+      <input type="text" class="form-control" name="town" id="town" x-autocompletetype="street-address" required>
       <span class="help-block"><span class="label label-default">例</span>新宿区西新宿1-2-3</span>
     </div>
   </div>
@@ -135,11 +135,11 @@
     <label for="name_kanji_family" class="col-sm-2 control-label">お名前（漢字）</label>
     <div class="input-group col-sm-3 continue">
       <span class="input-group-addon">姓</span>
-      <input type="text" class="form-control" name="name_kanji_family" id="name_kanji_family" placeholder="漢字" required>
+      <input type="text" class="form-control" name="name_kanji_family" id="name_kanji_family" placeholder="漢字" x-autocompletetype="surname" required>
     </div>
     <div class="input-group col-sm-3">
       <span class="input-group-addon">名</span>
-      <input type="text" class="form-control" name="name_kanji_given" id="name_kanji_given" placeholder="漢字" required>
+      <input type="text" class="form-control" name="name_kanji_given" id="name_kanji_given" placeholder="漢字" x-autocompletetype="given-name" required>
     </div>
   </div>
 
@@ -158,7 +158,7 @@
   <div class="form-group">
     <label for="tel" class="col-sm-2 control-label">電話番号</label>
     <div class="col-sm-6">
-      <input type="tel" class="form-control alphabet" name="tel" id="tel" pattern="0\d{1,4}[\-\s]?\d{1,4}[\-\s]\d{4}" required>
+      <input type="tel" class="form-control alphabet" name="tel" id="tel" pattern="0\d{1,4}[\-\s]?\d{1,4}[\-\s]\d{4}" x-autocompletetype="phone-national" required>
       <span class="help-block"><span class="label label-default">例</span>080 1234 5678</span>
       <span class="help-block">固定電話、携帯電話、いずれもOKです（ただし日本国内の回線に限ります）</span>
     </div>
@@ -167,7 +167,7 @@
   <div class="form-group">
     <label for="email" class="col-sm-2 control-label">メールアドレス</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control alphabet" name="email" id="email" pattern="^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$" required>
+      <input type="email" class="form-control alphabet" name="email" id="email" pattern="^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$" x-autocompletetype="email" required>
       <span class="help-block"><span class="label label-default">例</span>test@example.com</span>
     </div>
   </div>
@@ -216,7 +216,7 @@
     <div class="form-group">
       <label for="cc-holder" class="col-sm-2 control-label">カード名義人</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control holder alphabet" name="cc_holder" id="cc_holder" pattern="[A-Z]+\s[A-Z]+" required>
+        <input type="text" class="form-control holder alphabet" name="cc_holder" x-autocompletetype="cc-full-name" id="cc_holder" pattern="[A-Z]+\s[A-Z]+" required>
         <span class="help-block"><span class="label label-default">例</span>TARO YAMADA</span>
         <span class="help-block">英字大文字で姓名の間にはスペースを入れてください</span>
       </div>
@@ -231,9 +231,9 @@
     </div>
 
     <div class="form-group">
-      <label for="cc-sec" class="col-sm-2 control-label">セキュリティコード</label>
+      <label for="cc-csc" class="col-sm-2 control-label">セキュリティコード</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control cc-sec alphabet" name="cc-sec" id="cc-sec" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="3">
+        <input type="text" class="form-control cc-csc alphabet" name="cc-csc" id="cc-csc" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="3">
         <span class="help-block">カードの裏面にある数桁の数字のことです</span>
       </div>
     </div>

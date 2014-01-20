@@ -133,7 +133,7 @@ formAction.creditcardField = function(){
 
   $('.cc-number').payment('formatCardNumber');
   $('.cc-exp').payment('formatCardExpiry');
-  $('.cc-sec').payment('formatCardCVC');
+  $('.cc-csc').payment('formatCardCVC');
   $('[data-numeric]').payment('restrictNumeric');
   
   $('.cc-number').on('keyup', function(){
@@ -142,10 +142,13 @@ formAction.creditcardField = function(){
       $(this).attr("data-cardtype", cardtype);
       $(this).css("background-image", 'url("img/card_'+ cardtype +'.png")');
     }
+    if (cardtype == "amex"){
+
+    }
     
   });
 
-  $('.cc-sec').on("focus focusout", function(){
+  $('.cc-csc').on("focus focusout", function(){
     $(this).popover({
     html: true,
     placement: "top",
