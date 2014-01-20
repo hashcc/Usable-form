@@ -17,33 +17,41 @@ formAction.checkPattern = function(){
   
   $('[required]').on('keyup change', function(e){
     
-    // 例外としてcheckConfirmPassword()
-    if ($(this).attr("id") == "accoumt_password_confirm"){
-      var original = $('#accoumt_password');
+    // パスワード確認は例外としてcheckConfirmPassword()
+    if ($(this).attr("id") == "account_password_confirm"){
+      var original = $('#account_password');
       checkConfirmPassword(original, $(this));
-      //formAction.checkAllFieldFilled();
       return;
+    }
+
+    // メールアドレスはドコモ/auのRFC2822非準拠のものもチェックして警告
+    if ($(this).attr("id") == "email"){
+      $('#email').popover({
+        placement: "top",
+        title: "ご利用いただけません",
+        content: "メールアドレスの国際ルールに沿ったアドレスではなく、お客様へのメールがうまく配信されない恐れがあるため、ご利用いただけません。@の前に.をつけないか、連続した.を使わないアドレスをご利用ください",
+        trigger:   "manual"
+      });
+
+      if ((/\.@/.test($(this).val()) || /\.{2,}/.test($(this).val())) && /@(docomo|ezweb)/.test($(this).val())){
+        $('#email').popover("show");
+      }  else{
+        $('#email').popover("hide");
+      }
     }
     
     // 通常はcheckhoge()
     if (e.type == "keyup") checkInput($(this));
     if (e.type == "change") checkSelect($(this));
-    //formAction.checkAllFieldFilled();
 
   });
   
   $('.required input[type="radio"]:radio').on('click onkeypress', function (e){
-    
     checkRadio($(this));
-    //formAction.checkAllFieldFilled();
-
   });
 
   $('.required input[type="checkbox"]:checkbox').on('click onkeypress', function (){
-    
     checkCheckbox($(this));
-    //formAction.checkAllFieldFilled();
-
   });
 
   // 入力チェック pattern属性があればtest()、なければ無条件OK
@@ -94,6 +102,7 @@ formAction.checkPattern = function(){
 };
 
 // 必須入力項目が全て入力されているか確認して送信ボタンの有効/無効を切り替える
+// 今のところ封印中
 formAction.checkAllFieldFilled = function(){
   
   $("#submit").attr("disabled", "disabled");
@@ -138,12 +147,22 @@ formAction.creditcardField = function(){
   
   $('.cc-number').on('keyup', function(){
     var cardtype = $.payment.cardType($(this).val());
+
     if (cardtype){
       $(this).attr("data-cardtype", cardtype);
       $(this).css("background-image", 'url("img/card_'+ cardtype +'.png")');
     }
-    if (cardtype == "amex"){
 
+    if (cardtype == "amex"){
+      $('.cc-csc')
+        .attr("placeholder", "XXXX")
+        .attr("maxlength", "4")
+        .attr("pattern", "\d{4}");
+    } else{
+      $('.cc-csc')
+        .attr("placeholder", "XXX")
+        .attr("maxlength", "3")
+        .attr("pattern", "\d{3}");
     }
     
   });

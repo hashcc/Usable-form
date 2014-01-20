@@ -188,8 +188,8 @@
 
   <div class="form-group">
     <label for="paymentMethod" class="col-sm-2 control-label">お支払い方法</label>
-    <div class="col-sm-6 required">
-      <div class="radio" id="paymentMethod">
+    <div class="col-sm-6 required" id="paymentMethod">
+      <div class="radio">
         <label>
           <input type="radio" name="paymentMethod" value="option1">
           クレジットカード
@@ -216,7 +216,7 @@
     <div class="form-group">
       <label for="cc-holder" class="col-sm-2 control-label">カード名義人</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control holder alphabet" name="cc_holder" x-autocompletetype="cc-full-name" id="cc_holder" pattern="[A-Z]+\s[A-Z]+" required>
+        <input type="text" class="form-control cc-holder alphabet" name="cc_holder" x-autocompletetype="cc-full-name" id="cc_holder" pattern="[A-Z]+\s[A-Z]+" required>
         <span class="help-block"><span class="label label-default">例</span>TARO YAMADA</span>
         <span class="help-block">英字大文字で姓名の間にはスペースを入れてください</span>
       </div>
@@ -233,8 +233,8 @@
     <div class="form-group">
       <label for="cc-csc" class="col-sm-2 control-label">セキュリティコード</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control cc-csc alphabet" name="cc-csc" id="cc-csc" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="3">
-        <span class="help-block">カードの裏面にある数桁の数字のことです</span>
+        <input type="text" class="form-control cc-csc alphabet" name="cc-csc" id="cc-csc" pattern="\d{3,4}" placeholder="XXX" data-numeric required maxlength="4">
+        <span class="help-block">カードの裏面にある数桁の数字です</span>
       </div>
     </div>
   </div>
@@ -300,25 +300,25 @@
 <section class="registration">
   <p>ここでユーザ名とパスワードをご入力いただくと、次回以降お届先情報などの入力せずにお買い物いただけます。任意ですが、よろしければご登録ください。</p>
   <div class="form-group">
-    <label for="accoumt_username" class="col-sm-2 control-label">ユーザ名</label>
+    <label for="account_username" class="col-sm-2 control-label">ユーザ名</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control alphabet" name="accoumt_username" id="accoumt_username" pattern="[a-zA-Z0-9]{6,200}" required>
+        <input type="text" class="form-control alphabet" name="account_username" id="account_username" pattern="[a-zA-Z0-9]{6,200}" required>
         <span class="help-block">半角英数字のみで入力ください</span>
       </div>
   </div>
 
   <div class="form-group">
-    <label for="accoumt_password" class="col-sm-2 control-label">パスワード</label>
+    <label for="account_password" class="col-sm-2 control-label">パスワード</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control alphabet" name="accoumt_password" id="accoumt_password" pattern="[a-zA-Z0-9]{6,500}" required>
+        <input type="password" class="form-control alphabet" name="account_password" id="account_password" pattern="[a-zA-Z0-9]{6,500}" required>
         <span class="help-block">半角英数字のみ6文字以上で入力ください</span>
       </div>
   </div>
 
   <div class="form-group">
-    <label for="accoumt_password_confirm" class="col-sm-2 control-label">パスワード</label>
+    <label for="account_password_confirm" class="col-sm-2 control-label">パスワード</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control alphabet" name="accoumt_password_confirm" id="accoumt_password_confirm" pattern="[a-zA-Z0-9]{6,500}" required>
+        <input type="password" class="form-control alphabet" name="account_password_confirm" id="account_password_confirm" pattern="[a-zA-Z0-9]{6,500}" required>
         <span class="help-block">誤入力防止のため、上記と同じパスワードを再度入力ください</span>
       </div>
   </div>

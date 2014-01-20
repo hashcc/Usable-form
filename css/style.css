@@ -48,6 +48,10 @@ h2{
   background-repeat: no-repeat;
 }
 
+#cc_holder{
+  text-transform: uppercase;
+}
+
 span.label{
   margin-right: 1em;
 }
@@ -58,10 +62,6 @@ div.form-group div.continue{
 
 div.input-group{
   padding: 0px 15px !important;
-}
-
-input.holder{
-  text-transform: uppercase;
 }
 
 .ui-widget-content{
