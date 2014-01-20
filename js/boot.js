@@ -205,7 +205,16 @@ formAction.kanjiConverter = function(){
   // テキスト内容が変更されたらAPIに投げる
   $("#"+names["kanji_family"]+", #"+names["kanji_given"]).on("change", function(){
     
-    var id = $(this).attr("id");
+    // カナを投げられると何も返せない・・ぐぅ
+
+    var id   = $(this).attr("id");    
+    var attr = id.split("_")[2];
+    var elm  = $("#"+names["yomi_"+attr]);
+    
+    // "かな"のみなら、そのまま挿入
+    if (/^[ぁ-ん]*$/.test($(this).val()) == true){
+      elm.val($(this).val());
+    }
 
     $.ajax({
       url : "http://www.social-ime.com/api/",
@@ -214,14 +223,11 @@ formAction.kanjiConverter = function(){
         string : $(this).val()
       },
       success: function(data){
+        // 配列で返ってきます
         var yomis = $(data.responseText).text().trim().split(" ");
+        // よみがなを抽出します
         var yomi  = substituteYomi(yomis);
         // 対応する欄に値を入れる
-        if (id == names["kanji_family"]){
-          var elm = $("#"+names["yomi_family"]);
-        } else if (id == names["kanji_given"]){
-          var elm = $("#"+names["yomi_given"]);
-        }
         elm.val(yomi);
         setStatus(elm, "dealed");
         return;
