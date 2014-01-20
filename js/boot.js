@@ -270,16 +270,9 @@ formAction.datePicker = function(){
     var prefix  = "//ajax.googleapis.com/ajax/libs/jqueryui/1";
     
     // 動的にjQuery UIライブラリを読み込み
-    $.when(
-      
-      $.getScript(prefix+"/jquery-ui.min.js"),
-      $.getScript(prefix+"/i18n/jquery.ui.datepicker-ja.min.js"),
-      $.Deferred(function(deferred){
-        $(deferred.resolve);
-      })
 
-    ).done(function(){
-
+    $.getScript([prefix+"/jquery-ui.min.js", prefix+"/i18n/jquery.ui.datepicker-ja.min.js"],function(){
+    
       // 読み込み完了したらdatepickerを起動
       $.datepicker.setDefaults($.datepicker.regional["ja"]);
       $("#datepicker").datepicker({
@@ -289,7 +282,7 @@ formAction.datePicker = function(){
         "maxDate": max,
         "firstDay": 1 // 月曜始まり
       });
-
+    
     });
 
   }
@@ -327,3 +320,12 @@ function checkAttr(elm, attr){
   return (typeof elm.attr(attr) !== 'undefined' && elm.attr(attr) !== false) ? true : false;
 
 }
+
+// 関数上書：複数のスクリプト読み込みに対応した$.getScript
+var getScript = $.getScript;
+$.getScript = function(url, fn){
+  if (!$.isArray(url)) url = [url];
+  $.when.apply(null, $.map(url, getScript)).done(function(){
+    fn && fn();
+  });
+};
