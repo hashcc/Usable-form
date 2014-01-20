@@ -255,7 +255,7 @@ formAction.datePicker = function(){
       // 読み込み完了したらdatepickerを起動
       $.datepicker.setDefaults($.datepicker.regional["ja"]);
       $("#datepicker").datepicker({
-        "dateFormat": "yy-mm-dd",
+        "dateFormat": "yy-mm-dd", // YYYY-MM-DD
         "defaultDate": min,
         "minDate": min, 
         "maxDate": max,
