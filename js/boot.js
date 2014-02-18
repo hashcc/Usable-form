@@ -91,7 +91,6 @@ formAction.checkPattern = function(){
         checked = true;
       }
     });
-    console.log(checked);
     if (checked == true) return;
     setStatus(elm.parents(".required"), "alert");
   };
