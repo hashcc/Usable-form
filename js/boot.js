@@ -83,7 +83,17 @@ formAction.checkPattern = function(){
   };
 
   var checkCheckbox = function (elm){
-    setStatus(elm.parents(".required"), "dealed");
+    var checked = false;
+    // チェックボックスのどれか1つにチェックが入っていればOK
+    elm.parents(".required").find(".checkbox").each(function(){
+      if ($(this).find("input").is(":checked")){
+        setStatus(elm.parents(".required"), "dealed");
+        checked = true;
+      }
+    });
+    console.log(checked);
+    if (checked == true) return;
+    setStatus(elm.parents(".required"), "alert");
   };
 
   // パスワードが入力されたものと一致するか検証
